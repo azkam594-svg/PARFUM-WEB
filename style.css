@@ -121,7 +121,7 @@ body{
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
 .testi-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.75rem 1.5rem;position:relative;transition: transform .18s ease, box-shadow .18s ease;}
 .testi-card:hover {transform: translateY(-6px);box-shadow: 0 14px 40px rgba(182,142,58,0.12);}
-.testi-quote{position:absolute;top:3px;left:5px;margin-bottom:100rem;font-size:2.5rem;font-weight:900;color:rgba(182,142,58,0.25);}
+.testi-quote{position:absolute;top:3px;left:5px;font-size:2.5rem;font-weight:900;color:rgba(182,142,58,0.25);}
 .testi-stars{color:var(--accent);font-size:1.5rem;margin-bottom:0.6rem;}
 .testi-card p{color:var(--muted);font-size:0.9rem;line-height:1.5;margin-bottom:1rem;}
 .testi-card strong{display:block;font-weight:800;}
@@ -132,6 +132,12 @@ body{
 .testi-number{font-weight:900;color:var(--accent);font-size:1.75rem}
 .testi-label{color:var(--muted);font-size:1rem}
 
+@media (max-width: 640px){
+  .testi-container{justify-content: center;}
+  .testi-stat{flex: 1 1 45%; /* jadi 2 kolom */}
+  .testi-number{font-size: 1.5rem;}
+  .testi-label{font-size: 0.9rem;}
+}
 
 /* Contact panel styles */
 .contact-header{text-align:center;margin-bottom:1rem;}
@@ -203,3 +209,4 @@ body{
   .footer-inner{flex-direction:column;align-items:flex-start}
   .product-card img{height:200px}
 }
+
