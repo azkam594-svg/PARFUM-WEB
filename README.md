@@ -1,51 +1,49 @@
-# GENTLEMAN — Parfum Pria
+# GENTLEMAN — Parfum Pria (Beast Parfume)
 
-Deskripsi singkat
+**Deskripsi singkat**
 
-GENTLEMAN adalah situs sederhana untuk menampilkan koleksi parfum pria. Pada versi ini, bagian hero menampilkan gambar botol parfum yang berubah secara otomatis untuk menampilkan produk dari bagian `#products`.
+GENTLEMAN adalah laman statis produk parfum pria yang menampilkan koleksi produk, hero image carousel, testimoni, dan integrasi pemesanan melalui WhatsApp. Proyek ini dibuat tanpa dependensi eksternal — hanya HTML, CSS, dan JavaScript.
+
+---
 
 ## Fitur utama
 
-- Hero berganti otomatis (carousel) menampilkan gambar produk secara bergantian.
-- Carousel berhenti saat pengguna mengarahkan kursor atau saat gambar mendapat fokus keyboard.
-- Mudah dikustomisasi: menambah atau menghapus gambar pada `#products` akan otomatis mempengaruhi carousel.
-- Tidak menggunakan dependensi eksternal—hanya HTML, CSS, dan JavaScript.
+- Hero carousel otomatis yang berganti berdasarkan gambar dari `#products`.
+- Carousel berhenti saat pengguna melakukan hover atau saat gambar mendapat fokus keyboard.
+- Tombol *Beli* pada setiap produk membuka pesan WhatsApp dengan produk dan harga terisi.
+- Panel kontak menyediakan pilihan produk dan tombol *Pesan via WhatsApp* yang mengarahkan ke nomor WA proyek.
+- Smooth scroll untuk tombol hero yang menavigasi ke section terkait.
+- Gambar produk menggunakan `loading="lazy"` untuk performa lebih baik.
+- Aksesibilitas dasar: `aria-label`, fokus keyboard, dan perilaku pause/resume carousel.
 
 ## Berkas penting
 
-- `index.html` — struktur halaman.
-- `style.css` — gaya halaman, termasuk transisi fade untuk gambar hero.
-- `script.js` — logika carousel dan fungsi utilitas lain; `initHeroCarousel()` mengatur pergantian gambar dengan mekanisme retry dan fallback.
-- `image/` — folder gambar produk.
+- `index.html` — struktur halaman dan konten (hero, products, advantages, testimonials, contact, footer).
+- `style.css` — seluruh gaya tampilan (layout, transisi, responsif).
+- `script.js` — logika: carousel (`initHeroCarousel()`), tombol hero, tombol WhatsApp, dan panel kontak.
+- `assets/img/` — gambar produk (contoh: `azure.png`, `valor.png`, `noir.png`, `imperial.png`).
+- `assets/ikon/` — ikon (WhatsApp, sosial, dll.).
 
-## Cara menjalankan (lokal)
+## Menjalankan secara lokal
 
-1. Buka `index.html` langsung di browser (Chrome, Firefox, Edge).
+1. Cara cepat: buka `index.html` langsung di browser.
+2. Direkomendasikan: jalankan server lokal untuk menghindari pembatasan resource:
+   - Dengan Python: `python -m http.server 8000` lalu buka `http://localhost:8000`.
+   - Atau gunakan `http-server` (Node.js): `npx http-server`.
 
-   Jika ingin menjalankan lewat server lokal:
-   - Dengan Python: jalankan `python -m http.server 8000` lalu buka `http://localhost:8000`
-   - Atau gunakan server lain seperti `http-server` dari Node.js
+## Kustomisasi cepat
 
-2. Setelah terbuka, gambar hero akan mulai berganti otomatis. Rotasi pertama dimulai singkat setelah halaman siap.
+- Mengubah nomor WhatsApp: buka `script.js` dan ubah konstanta `WA_NUMBER` (format: kode negara + nomor; contoh `6281234567890`).
+- Menambah/mengubah produk: edit section `#products` di `index.html`. Tambahkan `article.product-card` yang berisi `<img src="assets/img/nama.png">`, judul, harga, dan tombol `.wa-btn` dengan atribut `data-name` dan `data-price`.
+- Mengubah interval carousel: ubah pemanggilan `initHeroCarousel({ interval: 3500 })` atau parameter default di `script.js`.
+- Menambah tombol prev/next atau indikator: tambahkan elemen di HTML dan sesuaikan `script.js` (bisa saya bantu jika diperlukan).
 
-## Kustomisasi carousel
+## Troubleshooting singkat
 
-- Mengubah interval: buka `script.js` lalu ubah nilai pada pemanggilan `initHeroCarousel({ interval: 3500 })`—nilai dalam milidetik.
-- Menambah produk: tambahkan elemen `article.product-card` dengan tag `<img src="image/nama.png">` di dalam section `#products`.
-- Bila ingin kontrol tambahan (tombol prev/next atau indikator), saya bisa membantu menambahkannya.
+- Jika carousel tidak berganti: pastikan ada setidaknya 2 gambar dalam `#products`.
+- Jika pesan WhatsApp tidak terbuka: periksa `WA_NUMBER` dan koneksi internet.
+- Jika gambar tidak muncul: pastikan path di `src` mengarah ke `assets/img/` dan nama file sesuai.
 
-## Troubleshooting
+## Lisensi & kontribusi
 
-- Pastikan ada setidaknya dua gambar di `#products` agar carousel bisa berputar.
-- Jika carousel tidak berjalan otomatis, coba buka melalui server lokal karena beberapa browser membatasi resource saat membuka file langsung.
-- Jika masih bermasalah, sebutkan browser dan versinya agar saya bisa membantu lebih lanjut.
-
-## Aksesibilitas dan perilaku
-
-- Carousel berhenti saat hover atau saat gambar mendapat fokus keyboard untuk mendukung pengguna keyboard dan pembaca layar.
-- Transisi menggunakan perubahan opacity sehingga pergantian gambar lebih halus.
-
-## Lisensi dan kontribusi
-
-Proyek ini tidak memiliki lisensi khusus pada berkas ini. Untuk kontribusi
-silakan kirim pull request atau beri tahu perubahan yang diinginkan.
+Tidak ada lisensi khusus yang ditetapkan di berkas ini. Untuk kontribusi, silakan buka issue atau kirim pull request.
